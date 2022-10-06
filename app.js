@@ -3,6 +3,7 @@ const taskInput = document.querySelector('#task')
 const taskList = document.querySelector('ul')
 const delAllTasks = document.querySelector('#del-tasks')
 
+
 form.addEventListener('submit', addTask)
 taskList.addEventListener('click', deleteTask)
 delAllTasks.addEventListener('click', deleteAllTasks)
@@ -88,5 +89,19 @@ function getTasks(){
         // add to list
         const ul = document.querySelector('ul')
         ul.appendChild(li)
+
     })
+
+}
+function filterTasks() {
+    let tasks = document.querySelectorAll('li')
+    let search_query = document.getElementById("myInput").value;
+    for (var i = 0; i < tasks.length; i++) {
+        if(tasks[i].innerText.slice(0, -1).toLowerCase()
+            .includes(search_query.toLowerCase())) {
+            tasks[i].hidden = false
+        } else {
+            tasks[i].hidden = true
+        }
+    }
 }
